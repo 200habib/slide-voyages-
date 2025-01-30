@@ -1,58 +1,63 @@
 let monImage = document.getElementById('monImage');
-let mesImage = document.getElementById('mesImage');
 let prev = document.getElementById('prev');
 let next = document.getElementById('next');
-let elements = document.querySelectorAll('.thumbnails-container > img');
 let thumbnails_container = document.getElementById('thumbnails_container');
 
-let array = ["./static/img/wide/gaby1.jpg","./static/img/wide/gaby2.jpg","./static/img/wide/hiroshima.jpg","./static/img/wide/iceland1.jpg","./static/img/wide/iceland2.jpg"]
+// Array of images
+let array = [
+    "./static/img/wide/gaby1.jpg",
+    "./static/img/wide/gaby2.jpg",
+    "./static/img/wide/hiroshima.jpg",
+    "./static/img/wide/iceland1.jpg",
+    "./static/img/wide/iceland2.jpg",
+    "./static/img/wide/japan1.jpg",
+    "./static/img/wide/jerusalem.jpg",
+    "./static/img/wide/jocelyn.jpg",
+    "./static/img/wide/lost.jpg",
+    "./static/img/wide/sifnos.jpg"
+];
 
-let count= 0;
-let count2 = 0
 
-const cat = localStorage.getItem("count img");
-console.log(cat)
+let count = 0;
 
-if (cat.trim()!== "") {
-    count =cat
-    monImage.src= array[count];
+// Retrieve the saved index from localStorage
+const savedCount = localStorage.getItem("count img");
+if (savedCount !== null) {
+    count = parseInt(savedCount);  // Ensure it's treated as an integer
+    monImage.src = array[count];
 }
 
+// Event listener for next button
 next.addEventListener('click', function() {
-    if (count<4) {
-         count++;
+    if (count < array.length - 1) {
+        count++;
     }
-    monImage.src= array[count];
-    console.log(count);
+    monImage.src = array[count];
     localStorage.setItem("count img", count);
 });
 
+// Event listener for prev button
 prev.addEventListener('click', function() {
-    if (count>0) {
+    if (count > 0) {
         count--;
-   }
-    monImage.src= array[count];
-    console.log(count);
+    }
+    monImage.src = array[count];
     localStorage.setItem("count img", count);
 });
 
-
-
+// Dynamically create thumbnails
 array.forEach((element, idx) => {
-    console.log(idx);
-   let img = document.createElement('img');
+    let img = document.createElement('img');
     img.src = element;
-    thumbnails_container.appendChild(img);
-    img.data= count2++
+    img.dataset.index = idx;  // Use data attribute to store the index
     
+    // Append to the thumbnails container
+    thumbnails_container.appendChild(img);
+
+    // Add event listener for image click
     img.addEventListener('click', function() {
-        console.log(img.src);
-        monImage.src= img.src;
-        console.log(img.data)
-        count=img.data
+        monImage.src = img.src;
+        count = parseInt(img.dataset.index); // Get index from data attribute
         localStorage.setItem("count img", count);
-})
+    });
 });
-
-
-

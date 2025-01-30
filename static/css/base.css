@@ -1,81 +1,95 @@
 html, body {
   padding: 0;
   margin: 0;
-  font-family: arial;
+  font-family: Arial, sans-serif;
   height: 100%;
-   background-image: linear-gradient(112.5deg, rgb(214, 214, 214) 0%, rgb(214, 214, 214) 10%,rgb(195, 195, 195) 10%, rgb(195, 195, 195) 53%,rgb(176, 176, 176) 53%, rgb(176, 176, 176) 55%,rgb(157, 157, 157) 55%, rgb(157, 157, 157) 60%,rgb(137, 137, 137) 60%, rgb(137, 137, 137) 88%,rgb(118, 118, 118) 88%, rgb(118, 118, 118) 91%,rgb(99, 99, 99) 91%, rgb(99, 99, 99) 100%),linear-gradient(157.5deg, rgb(214, 214, 214) 0%, rgb(214, 214, 214) 10%,rgb(195, 195, 195) 10%, rgb(195, 195, 195) 53%,rgb(176, 176, 176) 53%, rgb(176, 176, 176) 55%,rgb(157, 157, 157) 55%, rgb(157, 157, 157) 60%,rgb(137, 137, 137) 60%, rgb(137, 137, 137) 88%,rgb(118, 118, 118) 88%, rgb(118, 118, 118) 91%,rgb(99, 99, 99) 91%, rgb(99, 99, 99) 100%),linear-gradient(135deg, rgb(214, 214, 214) 0%, rgb(214, 214, 214) 10%,rgb(195, 195, 195) 10%, rgb(195, 195, 195) 53%,rgb(176, 176, 176) 53%, rgb(176, 176, 176) 55%,rgb(157, 157, 157) 55%, rgb(157, 157, 157) 60%,rgb(137, 137, 137) 60%, rgb(137, 137, 137) 88%,rgb(118, 118, 118) 88%, rgb(118, 118, 118) 91%,rgb(99, 99, 99) 91%, rgb(99, 99, 99) 100%),linear-gradient(90deg, rgb(195, 195, 195),rgb(228, 228, 228)); background-blend-mode:overlay,overlay,overlay,normal;
-}
-
-header {
-  background-color: #4e4a47;
-  text-align: center;
-  padding: 15px;
-  color: white;
-  height: 150px;
-  background-image: url("../../static/img/lens_background.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
+  background: linear-gradient(to right, #ececec, #d6d6d6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
-  width: 800px;
+  width: 60%;
+  max-width: 800px;
   text-align: center;
-  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 30px;
+}
 
+h1 {
+  font-size: 1.8em;
+  color: #444;
+  margin-bottom: 20px;
 }
 
 #monImage {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
   border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
+  transition: transform 0.3s ease-in-out;
 }
 
-p > button{
-  font-family: arial;
-  padding: 15px;
-  margin-left:5px;
-  border-radius: 4px;
-  font-size: 1.5em;
-  border:0;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+#monImage:hover {
+  transform: scale(1.02);
 }
 
-
-
-
-.buttons-container{
-	display:flex;
-	justify-content: space-between;
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
 }
 
-
-.buttons-container button{
-	background-color: #4e4a47;
-    border-radius:4px;
-	color:white;
-	border:none;
-	padding:0.5rem;
-	cursor:pointer;
-	width:49%;
-    margin-bottom: 10px;
+.buttons-container button {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 48%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 10px;
 }
 
-.buttons-container button:hover{
-	opacity:0.8;
+.buttons-container button:hover {
+  background: #555;
+  transform: scale(1.05);
 }
 
-.thumbnails-container{
-    border-top:1px solid grey;
-    padding-top:4px;
-	 display:flex;
-    height: 140px;
-    overflow: auto;
-}
-.thumbnails-container img{
-    margin-left:5px;
-	 height:100px;
-    border-radius: 4px;
+.thumbnails-container {
+  display: flex;
+  justify-content: start;
+  gap: 8px;
+  margin-top: 15px;
+  padding-top: 8px;
+  border-top: 2px solid #ddd;
+  overflow-x: auto;
+  padding-bottom: 10px;
 }
 
-.thumbnails-current{
-  box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
+.thumbnails-container img {
+  width: 100px;
+  height: 70px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  opacity: 0.7;
+  border: 2px solid transparent;
+}
+
+.thumbnails-container img:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.thumbnails-current {
+  border: 2px solid #ff4081;
+  opacity: 1;
+  box-shadow: 0px 0px 10px rgba(255, 64, 129, 0.6);
 }
